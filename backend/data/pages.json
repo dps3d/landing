@@ -9,7 +9,7 @@
         "title": "Кава з душею Львова",
         "subtitle": "Обсмажуємо добірні зерна щодня, щоб кожна чашка дарувала особливий смак і аромат.",
         "image": {
-          "src": "/img/hero.jpg",
+          "src": "https://unsplash.com/photos/brown-coffee-bean-lot-ivP3TYdLvw0",
           "alt": "Чашка свіжозвареної кави та обсмажені кавові зерна"
         },
         "buttons": [

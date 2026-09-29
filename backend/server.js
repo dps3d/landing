@@ -1,8 +1,15 @@
 import express from "express"
+import cors from "cors"
 import settings from "./data/common.json" with {type: 'json'}
 import pages from "./data/pages.json" with {type: 'json'}
 
 const app = express();
+
+app.use(cors({
+    orirgin: process.env.FRONTEND_URL,
+    origin: process.env.FRONTEND_URL,
+}))
+
 const PORT = process.env.PORT || 3000
 
 
