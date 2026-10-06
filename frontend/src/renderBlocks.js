@@ -1,7 +1,7 @@
+import {hero} from "./blocks/hero.js";
 import { features } from "./blocks/features.js";
-import {hero} from "./blocks/hero.js"
 
-const renderers = {hero, features}
+const renderers = {hero, features};
 
 export function renderBlocks(blocks){
     return blocks.map((block) => {
@@ -10,7 +10,6 @@ export function renderBlocks(blocks){
         if (!render){
             console.warn(`no block ${block.type}`);
             return '';
-            
         }
 
         return render(block);
