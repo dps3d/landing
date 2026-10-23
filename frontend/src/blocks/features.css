@@ -1,14 +1,85 @@
+.features {
+  padding-block: 48px;
+}
 
-.features, .testimonials { padding-block: 64px; }
-.features__grid, .testimonials__list { display: grid; gap: 20px; }
-.feature { padding: 24px; border-radius: 16px; background: var(--color-surface); }
-.feature__icon { font-size: 2rem; }
-.feature__title { margin: 12px 0 6px; }
-.feature__text { margin: 0; color: var(--color-muted); }
-.testimonial { margin: 0; padding: 24px; border: 1px solid var(--color-line); border-radius: 16px; }
-.testimonial__rating { color: var(--color-accent); letter-spacing: 2px; }
-.testimonial__text { margin: 12px 0; font-size: 1.05rem; }
-.testimonial__name { color: var(--color-muted); font-weight: 600; }
+.features__grid {
+  display: grid;
+  gap: 20px;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 26px;
+  border-radius: 16px;
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(216, 207, 188, 0.34);
+}
+
+.feature-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.feature-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  font-size: 1.4rem;
+}
+
+.feature-card__tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(86, 84, 73, 0.32);
+  border: 1px solid rgba(216, 207, 188, 0.16);
+  color: var(--color-bone);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.feature-card__title {
+  margin: 4px 0 0;
+  color: var(--color-heading);
+  font-size: 1.25rem;
+}
+
+.feature-card__text {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.feature-card__list {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  color: var(--color-text);
+  font-size: 0.88rem;
+  display: grid;
+  gap: 6px;
+}
+
+.feature-card__list li::marker {
+  color: var(--color-bone);
+}
+
 @media (min-width: 768px) {
-  .features__grid, .testimonials__list { grid-template-columns: repeat(3, 1fr); }
+  .features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

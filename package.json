@@ -1,0 +1,15 @@
+{
+  "name": "mcu-inventory-ts-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Монорепозиторій презентаційного веб-ресурсу MCU Inventory System (Payload CMS 3.0 + Neon PostgreSQL + Vite + TypeScript)",
+  "scripts": {
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "typecheck": "npm --prefix frontend run typecheck",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:cms": "npm --prefix cms run dev",
+    "build:cms": "npm --prefix cms run build",
+    "mcu-start": "npm --prefix frontend run dev"
+  }
+}

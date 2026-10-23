@@ -1,265 +1,286 @@
-<title>Анатомія лендингу</title>
-<style>
-:root {
-  --color-bg: #fbf8f4;
-  --color-surface: #f1ebe3;
-  --color-line: #e2d8cc;
-  --color-text: #221a14;
-  --color-muted: #6b5d52;
-  --color-accent: #b4541f;
-  --color-accent-soft: #f6e2d4;
-  --color-dark: #2a1d15;
-  --color-on-dark: #fbf8f4;
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Анатомія лендингу — MCU Inventory System</title>
+  <style>
+    :root {
+      --color-bg: #11120d;
+      --color-surface: #2a2529;
+      --color-card: #201b1f;
+      --color-line: rgba(216, 207, 188, 0.16);
+      --color-heading: #fffbf4;
+      --color-text: #f3f0e7;
+      --color-bone: #d8cfbc;
+      --color-muted: #9e9788;
+      --color-accent: #565449;
+      --color-accent-soft: rgba(86, 84, 73, 0.35);
 
-  --tag-page: #1f6feb;
-  --tag-common: #7c3aed;
-  --tag-block: #0f766e;
-}
+      --tag-page: #2563eb;
+      --tag-common: #7c3aed;
+      --tag-block: #0d9488;
+    }
 
-* { box-sizing: border-box; }
+    * { box-sizing: border-box; }
 
-body {
-  margin: 0;
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: system-ui, "Segoe UI", sans-serif;
-  line-height: 1.5;
-}
+    body {
+      margin: 0;
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: system-ui, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
 
-/* ---------- toolbar ---------- */
-.bar {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  z-index: 50;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 20px;
-  align-items: center;
-  padding: 10px 16px;
-  background: #16110d;
-  color: #f3ece4;
-  font-size: 0.85rem;
-}
-.bar strong { font-size: 0.95rem; }
-.legend { display: flex; flex-wrap: wrap; gap: 14px; }
-.legend span { display: inline-flex; align-items: center; gap: 6px; }
-.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
-.toggle {
-  margin-left: auto;
-  font: inherit;
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid #f3ece4;
-  background: #f3ece4;
-  color: #16110d;
-  font-weight: 600;
-  cursor: pointer;
-}
-.toggle[aria-pressed="false"] { background: transparent; color: #f3ece4; }
-.toggle:focus-visible { outline: 2px solid #f5c26b; outline-offset: 2px; }
+    /* ---------- toolbar ---------- */
+    .bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      align-items: center;
+      padding: 12px 20px;
+      background: #191618;
+      border-bottom: 1px solid var(--color-line);
+      color: var(--color-heading);
+      font-size: 0.85rem;
+    }
+    .bar strong { font-size: 0.95rem; color: var(--color-bone); }
+    .legend { display: flex; flex-wrap: wrap; gap: 16px; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+    .toggle {
+      margin-left: auto;
+      font: inherit;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--color-bone);
+      background: var(--color-bone);
+      color: #11120d;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .toggle[aria-pressed="false"] { background: transparent; color: var(--color-bone); }
 
-/* ---------- landing (той самий CSS, що в проєкті) ---------- */
-#app { max-width: 1200px; margin: 0 auto; padding-inline: 16px; }
-img { max-width: 100%; display: block; }
-.section-title { margin: 0 0 24px; font-size: clamp(1.6rem, 4vw, 2.4rem); }
+    #app { max-width: 1200px; margin: 0 auto; padding-inline: 18px; }
+    .section-title { margin: 0 0 12px; color: var(--color-heading); font-size: clamp(1.5rem, 3vw, 2.2rem); }
+    .section-sub { margin: 0 0 24px; color: var(--color-muted); }
 
-.header { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; padding-block: 28px 20px; }
-.header__logo { color: var(--color-text); font-size: 1.4rem; font-weight: 800; text-decoration: none; }
-.header__nav { display: flex; flex-wrap: wrap; gap: 20px; }
-.header__link { color: var(--color-muted); text-decoration: none; }
+    .header { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; padding-block: 24px; border-bottom: 1px solid var(--color-line); }
+    .header__logo { color: var(--color-heading); font-size: 1.3rem; font-weight: 800; text-decoration: none; }
+    .header__nav { display: flex; flex-wrap: wrap; gap: 20px; }
+    .header__link { color: var(--color-bone); text-decoration: none; }
+    .header__status { padding: 4px 10px; border-radius: 999px; background: rgba(16, 185, 129, 0.16); color: #6ee7b7; font-family: monospace; font-size: 0.76rem; }
 
-.btn { display: inline-block; padding: 14px 28px; border: 2px solid var(--color-accent); border-radius: 999px; font-weight: 600; text-decoration: none; }
-.btn--primary { background: var(--color-accent); color: #fff; }
-.btn--secondary { color: var(--color-accent); }
+    .btn { display: inline-block; padding: 12px 22px; border-radius: 10px; font-weight: 600; text-decoration: none; }
+    .btn--primary { background: var(--color-bone); color: #11120d; }
+    .btn--secondary { background: var(--color-accent); color: var(--color-heading); }
 
-.hero { display: grid; gap: 32px; align-items: center; padding-block: 48px; }
-.hero__content { display: grid; gap: 16px; justify-items: start; }
-.hero__badge { padding: 4px 12px; border-radius: 999px; background: var(--color-accent-soft); color: var(--color-accent); font-size: 0.85rem; font-weight: 600; }
-.hero__title { margin: 0; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.05; }
-.hero__subtitle { margin: 0; max-width: 45ch; font-size: 1.15rem; color: var(--color-muted); }
-.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
-.hero__image {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  border-radius: 24px;
-  background:
-    radial-gradient(circle at 62% 45%, #f5d9bf 0 16%, transparent 16.5%),
-    radial-gradient(circle at 62% 45%, #6b3a1e 0 22%, transparent 22.5%),
-    radial-gradient(circle at 30% 70%, #3b2416 0 5%, transparent 5.5%),
-    radial-gradient(circle at 22% 58%, #3b2416 0 4%, transparent 4.5%),
-    radial-gradient(circle at 38% 82%, #3b2416 0 4.5%, transparent 5%),
-    linear-gradient(135deg, #c8875a, #8a4f2a);
-}
-@media (min-width: 768px) {
-  .hero { grid-template-columns: 1fr 1fr; }
-}
+    .hero { display: grid; gap: 32px; align-items: center; padding: 36px; margin-block: 28px; border-radius: 20px; background: var(--color-surface); border: 1px solid var(--color-line); }
+    .hero__content { display: grid; gap: 16px; justify-items: start; }
+    .hero__badge { padding: 4px 12px; border-radius: 999px; background: var(--color-accent-soft); color: var(--color-bone); font-size: 0.82rem; font-weight: 600; }
+    .hero__title { margin: 0; color: var(--color-heading); font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.1; }
+    .hero__subtitle { margin: 0; color: var(--color-muted); }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero__visual-box {
+      padding: 24px;
+      border-radius: 16px;
+      background: #191618;
+      border: 1px solid var(--color-line);
+      font-family: monospace;
+      color: var(--color-bone);
+    }
+    @media (min-width: 820px) { .hero { grid-template-columns: 1.2fr 0.8fr; } }
 
-.features, .testimonials { padding-block: 64px; }
-.features__grid, .testimonials__list { display: grid; gap: 20px; }
-.feature { padding: 24px; border-radius: 16px; background: var(--color-surface); }
-.feature__icon { font-size: 2rem; }
-.feature__title { margin: 12px 0 6px; }
-.feature__text { margin: 0; color: var(--color-muted); }
-.testimonial { margin: 0; padding: 24px; border: 1px solid var(--color-line); border-radius: 16px; }
-.testimonial__rating { color: var(--color-accent); letter-spacing: 2px; }
-.testimonial__text { margin: 12px 0; font-size: 1.05rem; }
-.testimonial__name { color: var(--color-muted); font-weight: 600; }
-@media (min-width: 768px) {
-  .features__grid, .testimonials__list { grid-template-columns: repeat(3, 1fr); }
-}
+    .features, .showcase, .testimonials { padding-block: 44px; }
+    .grid-2 { display: grid; gap: 20px; }
+    .grid-3 { display: grid; gap: 20px; }
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
 
-.contacts { display: grid; gap: 8px; justify-items: start; padding: 48px 32px; margin-block: 64px; border-radius: 24px; background: var(--color-dark); color: var(--color-on-dark); }
-.contacts .section-title { color: inherit; }
-.contacts__link { color: inherit; font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 600; text-decoration: none; }
-.contacts__address { margin: 8px 0 0; opacity: 0.75; }
+    .card { padding: 22px; border-radius: 16px; background: var(--color-card); border: 1px solid var(--color-line); }
+    .card h3 { margin: 10px 0 6px; color: var(--color-heading); }
+    .card p { margin: 0; color: var(--color-muted); font-size: 0.92rem; }
+    .mono-pill { display: inline-block; padding: 3px 8px; border-radius: 6px; background: var(--color-surface); font-family: monospace; font-size: 0.76rem; color: var(--color-bone); }
 
-.footer { padding-block: 32px; border-top: 1px solid var(--color-line); color: var(--color-muted); font-size: 0.9rem; }
+    .contacts { display: grid; gap: 12px; justify-items: start; padding: 36px; margin-block: 44px; border-radius: 20px; background: var(--color-surface); border: 1px solid var(--color-line); }
+    .contacts__link { color: var(--color-heading); font-size: 1.4rem; font-weight: 700; text-decoration: none; }
+    .footer { padding-block: 28px; border-top: 1px solid var(--color-line); color: var(--color-muted); font-size: 0.88rem; }
 
-/* ---------- підписи полів ---------- */
-.show [data-f] {
-  position: relative;
-  outline: 2px dashed var(--tag-page);
-  outline-offset: 3px;
-}
-.show [data-f]::before {
-  content: attr(data-f);
-  position: absolute;
-  z-index: 10;
-  top: -13px;
-  left: -5px;
-  padding: 1px 6px;
-  border-radius: 4px;
-  background: var(--tag-page);
-  color: #fff;
-  font: 600 11px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace;
-  letter-spacing: 0;
-  white-space: nowrap;
-  text-transform: none;
-  pointer-events: none;
-}
-.show [data-pos="below"]::before { top: auto; bottom: -16px; }
-.show [data-src="common"] { outline-color: var(--tag-common); }
-.show [data-src="common"]::before { background: var(--tag-common); }
+    /* ---------- підписи полів ---------- */
+    .show [data-f] {
+      position: relative;
+      outline: 2px dashed var(--tag-page);
+      outline-offset: 3px;
+    }
+    .show [data-f]::before {
+      content: attr(data-f);
+      position: absolute;
+      z-index: 10;
+      top: -14px;
+      left: -4px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: var(--tag-page);
+      color: #fff;
+      font: 600 11px/1.4 ui-monospace, Consolas, monospace;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .show [data-pos="below"]::before { top: auto; bottom: -16px; }
+    .show [data-src="common"] { outline-color: var(--tag-common); }
+    .show [data-src="common"]::before { background: var(--tag-common); }
 
-.show [data-block] {
-  position: relative;
-  outline: 3px solid var(--tag-block);
-  outline-offset: 10px;
-  border-radius: 6px;
-  margin-top: 28px;
-}
-.show [data-block]::after {
-  content: attr(data-block);
-  position: absolute;
-  z-index: 11;
-  top: -34px;
-  right: -10px;
-  padding: 3px 10px;
-  border-radius: 6px 6px 0 0;
-  background: var(--tag-block);
-  color: #fff;
-  font: 700 12px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace;
-  white-space: nowrap;
-  pointer-events: none;
-}
-.show .contacts[data-block] { border-radius: 24px; }
-</style>
-
-<div class="bar">
-  <strong>Анатомія лендингу</strong>
-  <div class="legend">
-    <span><i style="background:#0f766e"></i>блок з <code>pages.json</code> → <code>blocks[i]</code></span>
-    <span><i style="background:#1f6feb"></i>поле блоку</span>
-    <span><i style="background:#7c3aed"></i>поле з <code>common.json</code></span>
+    .show [data-block] {
+      position: relative;
+      outline: 3px solid var(--tag-block);
+      outline-offset: 8px;
+      border-radius: 12px;
+      margin-top: 32px;
+    }
+    .show [data-block]::after {
+      content: attr(data-block);
+      position: absolute;
+      z-index: 11;
+      top: -32px;
+      right: -6px;
+      padding: 3px 10px;
+      border-radius: 6px 6px 0 0;
+      background: var(--tag-block);
+      color: #fff;
+      font: 700 12px/1.4 ui-monospace, Consolas, monospace;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <strong>Анатомія лендингу: MCU Inventory System (TypeScript + Payload CMS)</strong>
+    <div class="legend">
+      <span><i style="background:#0d9488"></i>блок з <code>/api/page?path=/</code> → <code>blocks[i]</code></span>
+      <span><i style="background:#2563eb"></i>поле блоку (<code>PageBlock</code>)</span>
+      <span><i style="background:#7c3aed"></i>поле з <code>/api/common</code> (<code>CommonSettings</code>)</span>
+    </div>
+    <button type="button" class="toggle" id="toggle" aria-pressed="true">Підписи: увімкнено</button>
   </div>
-  <button type="button" class="toggle" id="toggle" aria-pressed="true">Підписи: увімкнено</button>
-</div>
 
-<div id="app" class="show">
-  <header class="header">
-    <a class="header__logo" href="#" data-f="siteName" data-src="common">Зерно</a>
-    <nav class="header__nav">
-      <a class="header__link" href="#features" data-f="menu[0]" data-src="common">Чому ми</a>
-      <a class="header__link" href="#testimonials" data-f="menu[1]" data-src="common">Відгуки</a>
-      <a class="header__link" href="#contacts" data-f="menu[2]" data-src="common">Контакти</a>
-    </nav>
-  </header>
+  <div id="app" class="show">
+    <header class="header">
+      <a class="header__logo" href="#" data-f="siteName" data-src="common">🔌 MCU Inventory System</a>
+      <span class="header__status" data-f="dbStatus: 'online'" data-src="common">● БД активна (Neon)</span>
+      <nav class="header__nav">
+        <a class="header__link" href="#features" data-f="menu[0]" data-src="common">Модулі платформи</a>
+        <a class="header__link" href="#catalog" data-f="menu[1]" data-src="common">Номенклатура MCU</a>
+        <a class="header__link" href="#testimonials" data-f="menu[2]" data-src="common">Досвід лабораторії</a>
+        <a class="header__link" href="#contacts" data-f="menu[3]" data-src="common">Контакти</a>
+      </nav>
+      <a class="header__link" href="tel:+380322581240" data-f="headerPhone" data-src="common">+380 (32) 258-12-40</a>
+    </header>
 
-  <main>
-    <section class="hero" data-block="blocks[0] · type: &quot;hero&quot;">
-      <div class="hero__content">
-        <span class="hero__badge" data-f="badge">Свіжа обсмажка щотижня</span>
-        <h1 class="hero__title" data-f="title">Кава, яка будить</h1>
-        <p class="hero__subtitle" data-f="subtitle">Обсмажуємо зерно малими партіями у Львові й доставляємо по всій Україні за 1–2 дні.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#contacts" data-f="buttons[0] · variant: primary">Замовити</a>
-          <a class="btn btn--secondary" href="#features" data-f="buttons[1] · variant: secondary" data-pos="below">Чому ми</a>
+    <main>
+      <section class="hero" data-block="blocks[0] · type: &quot;hero&quot; (HeroBlock)">
+        <div class="hero__content">
+          <span class="hero__badge" data-f="badge">Академічна лабораторія • MCU Inventory System</span>
+          <h1 class="hero__title" data-f="title">Лабораторна система обліку мікроконтролерів та проєктів</h1>
+          <p class="hero__subtitle" data-f="subtitle">Єдина веб-платформа для контролю лабораторного фонду радіодеталей, Pinout Builder, органайзерів та специфікацій BOM.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#catalog" data-f="buttons[0] · variant: primary">Переглянути номенклатуру MCU</a>
+            <a class="btn btn--secondary" href="#features" data-f="buttons[1] · variant: secondary" data-pos="below">Функціональні модулі</a>
+          </div>
         </div>
-      </div>
-      <div class="hero__image" role="img" aria-label="Чашка кави і кавові зерна" data-f="image.src + image.alt"></div>
-    </section>
+        <div class="hero__visual-box" data-f="image.src + image.alt">
+          <div>[STM32F103C8T6 • LQFP-48 PINOUT]</div>
+          <div style="margin-top:8px; color:#6ee7b7;">ORG-A1 • R1-C2 • In Stock: 34 pcs</div>
+        </div>
+      </section>
 
-    <section class="features" id="features" data-block="blocks[1] · type: &quot;features&quot; · anchor">
-      <h2 class="section-title" data-f="title">Чому ми</h2>
-      <div class="features__grid">
-        <article class="feature" data-f="items[0]">
-          <span class="feature__icon" data-f="icon">🔥</span>
-          <h3 class="feature__title" data-f="title">Свіжа обсмажка</h3>
-          <p class="feature__text" data-f="text">Зерно не старше 7 днів з моменту обсмажки.</p>
-        </article>
-        <article class="feature" data-f="items[1]">
-          <span class="feature__icon">🚚</span>
-          <h3 class="feature__title">Швидка доставка</h3>
-          <p class="feature__text">Нова пошта по всій Україні за 1–2 дні.</p>
-        </article>
-        <article class="feature" data-f="items[2]">
-          <span class="feature__icon">☕</span>
-          <h3 class="feature__title">Підбір смаку</h3>
-          <p class="feature__text">Допоможемо обрати каву під ваш спосіб заварювання.</p>
-        </article>
-      </div>
-    </section>
+      <section class="features" id="features" data-block="blocks[1] · type: &quot;features&quot; (FeaturesBlock)">
+        <h2 class="section-title" data-f="title">Функціональні модулі системи</h2>
+        <div class="grid-2">
+          <article class="card" data-f="items[0]">
+            <span class="mono-pill" data-f="moduleTag">Каталог та Pinout</span>
+            <h3 data-f="title">🔌 Каталог та Pinout Builder</h3>
+            <p data-f="text">Централізована номенклатура мікроконтролерів STM32, ESP32, AVR, RP2040 та інтерактивна візуалізація шин.</p>
+          </article>
+          <article class="card" data-f="items[1]">
+            <span class="mono-pill">Колірні комірки</span>
+            <h3>📦 Адресний складський облік</h3>
+            <p>Точна топологія розміщення деталей у касетних органайзерах, рядах та окремих комірках.</p>
+          </article>
+        </div>
+      </section>
 
-    <section class="testimonials" id="testimonials" data-block="blocks[2] · type: &quot;testimonials&quot; · anchor">
-      <h2 class="section-title" data-f="title">Відгуки</h2>
-      <div class="testimonials__list">
-        <figure class="testimonial" data-f="items[0]">
-          <div class="testimonial__rating" data-f="rating: 5 → ★ × 5">★★★★★</div>
-          <blockquote class="testimonial__text" data-f="text">Найкраща кава, яку я пробувала вдома. Замовляю вже пів року.</blockquote>
-          <figcaption class="testimonial__name" data-f="name">Оксана</figcaption>
-        </figure>
-        <figure class="testimonial" data-f="items[1]">
-          <div class="testimonial__rating">★★★★★</div>
-          <blockquote class="testimonial__text">Привезли наступного дня, аромат відчувся ще в коробці.</blockquote>
-          <figcaption class="testimonial__name">Андрій</figcaption>
-        </figure>
-        <figure class="testimonial" data-f="items[2]">
-          <div class="testimonial__rating" data-f="rating: 4">★★★★</div>
-          <blockquote class="testimonial__text">Хороший вибір для турки, трохи задорого для щоденної.</blockquote>
-          <figcaption class="testimonial__name">Ірина</figcaption>
-        </figure>
-      </div>
-    </section>
+      <section class="showcase" id="catalog" data-block="blocks[2] · type: &quot;showcase&quot; (ShowcaseBlock)">
+        <h2 class="section-title" data-f="title">Актуальні позиції лабораторного складу</h2>
+        <div class="grid-3">
+          <article class="card" data-f="items[0]">
+            <span class="mono-pill" data-f="packageType: 'LQFP-48'">LQFP-48</span>
+            <h3 data-f="partNumber">STM32F103C8T6</h3>
+            <p data-f="cellCode + stockStatus">📍 ORG-A1 • R1-C2 • В наявності (34 шт.)</p>
+          </article>
+          <article class="card" data-f="items[1]">
+            <span class="mono-pill">Module</span>
+            <h3>ESP32-WROOM-32D</h3>
+            <p>📍 ORG-A1 • R1-C1 • В наявності (28 шт.)</p>
+          </article>
+          <article class="card" data-f="items[2]">
+            <span class="mono-pill">DIP-28</span>
+            <h3>ATmega328P-PU</h3>
+            <p>📍 ORG-A2 • R1-C4 • Малий залишок (6 шт.)</p>
+          </article>
+        </div>
+      </section>
 
-    <section class="contacts" id="contacts" data-block="blocks[3] · type: &quot;contacts&quot; · anchor">
-      <h2 class="section-title" data-f="title">Контакти</h2>
-      <a class="contacts__link" href="tel:+380671234567" data-f="phone → tel:">+380 67 123 45 67</a>
-      <a class="contacts__link" href="mailto:hello@zerno.ua" data-f="email → mailto:">hello@zerno.ua</a>
-      <p class="contacts__address" data-f="address">Львів, вул. Руська, 12</p>
-    </section>
-  </main>
+      <section class="testimonials" id="testimonials" data-block="blocks[3] · type: &quot;testimonials&quot; (TestimonialsBlock)">
+        <h2 class="section-title" data-f="title">Відгуки викладачів та інженерів</h2>
+        <div class="grid-3">
+          <article class="card" data-f="items[0]">
+            <div style="color:#f59e0b" data-f="rating: 5">★★★★★</div>
+            <p style="margin-block:10px" data-f="text">«Час видачі комплектів на лабораторні роботи скоротився втричі.»</p>
+            <strong data-f="name + role">Олександр Ковальчук • Керівник лабораторії</strong>
+          </article>
+          <article class="card" data-f="items[1]">
+            <div style="color:#f59e0b">★★★★★</div>
+            <p style="margin-block:10px">«Pinout Builder та калькулятор BOM дозволяють перевіряти сумісність шин до пайки.»</p>
+            <strong>Ірина Мельник • Викладачка IoT</strong>
+          </article>
+          <article class="card" data-f="items[2]">
+            <div style="color:#f59e0b">★★★★★</div>
+            <p style="margin-block:10px">«Поєднання Payload CMS та TypeScript захищає каталог від людських помилок.»</p>
+            <strong>Тарас Бойко • Лаборант</strong>
+          </article>
+        </div>
+      </section>
 
-  <footer class="footer" data-f="© рік + siteName + footer.text" data-src="common">© 2026 Зерно. Обсмажуємо каву у Львові з 2019 року</footer>
-</div>
+      <section class="contacts" id="contacts" data-block="blocks[4] · type: &quot;contacts&quot; (ContactsBlock)">
+        <h2 class="section-title" data-f="title">Як отримати доступ до роботи в лабораторії</h2>
+        <a class="contacts__link" href="tel:+380322581240" data-f="phone → tel:">+380 (32) 258-12-40</a>
+        <a class="contacts__link" href="mailto:lab.mcu@inventory.edu.ua" data-f="email → mailto:">lab.mcu@inventory.edu.ua</a>
+        <p data-f="address">м. Львів, вул. Володимира Великого, 51 • Корпус електроніки, ауд. 304</p>
+        <span class="mono-pill" data-f="activeMonth (Select)">📅 Поточний місяць ревізії: Жовтень</span>
+      </section>
+    </main>
 
-<script>
-  (function () {
-    var app = document.getElementById('app');
-    var btn = document.getElementById('toggle');
-    btn.addEventListener('click', function () {
-      var on = app.classList.toggle('show');
-      btn.setAttribute('aria-pressed', String(on));
-      btn.textContent = on ? 'Підписи: увімкнено' : 'Підписи: вимкнено';
-    });
-  })();
-</script>
+    <footer class="footer" data-f="© рік + siteName + footer.text + footer.systemInfo" data-src="common">
+      © 2026 MCU Inventory System. Єдина лабораторна веб-платформа обліку мікроконтролерів, складських комірок та специфікацій BOM.
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var app = document.getElementById('app');
+      var btn = document.getElementById('toggle');
+      btn.addEventListener('click', function () {
+        var on = app.classList.toggle('show');
+        btn.setAttribute('aria-pressed', String(on));
+        btn.textContent = on ? 'Підписи: увімкнено' : 'Підписи: вимкнено';
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,3 +1,7 @@
-backend/.env
-backend/node_modules
+node_modules/
+dist/
+.next/
 .env
+*.log
+.DS_Store
+tsconfig.tsbuildinfo

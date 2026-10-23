@@ -1,0 +1,125 @@
+.showcase {
+  padding-block: 48px;
+}
+
+.showcase__grid {
+  display: grid;
+  gap: 20px;
+}
+
+.mcu-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 22px;
+  border-radius: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+}
+
+.mcu-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mcu-card__part {
+  margin: 0;
+  color: var(--color-heading);
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.mcu-card__category {
+  display: block;
+  margin-top: 2px;
+  color: var(--color-bone);
+  font-size: 0.82rem;
+}
+
+.mcu-card__pkg {
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  color: var(--color-heading);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.mcu-card__arch {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #171416;
+  border: 1px dashed rgba(216, 207, 188, 0.18);
+  color: var(--color-bone);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.mcu-card__desc {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.mcu-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-line);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.mcu-card__cell {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.stock-badge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.stock-badge--ok {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.stock-badge--low {
+  background: rgba(245, 158, 11, 0.16);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.stock-badge--reserved {
+  background: rgba(59, 130, 246, 0.16);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+@media (min-width: 768px) {
+  .showcase__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1080px) {
+  .showcase__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,31 +1,45 @@
-import express from "express";
+import express from 'express';
 import cors from 'cors';
 
-import settings from "./data/common.json" with {type: 'json'};
-import pages from "./data/pages.json" with {type: 'json'};
-
+import common from './data/common.json' with { type: 'json' };
+import pages from './data/pages.json' with { type: 'json' };
 
 const app = express();
-app.use(cors(
-    {origin: process.env.FRONTEND_URL}
-));
+
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || '*',
+  })
+);
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/api/settings', (req, res) => {
-    res.json(settings);
-})
+// Кастомний ендпоінт наскрізних налаштувань (Globals: Common)
+app.get(['/api/common', '/api/settings'], (req, res) => {
+  res.json(common);
+});
 
-app.get('/api/pages', (req, res) => {
-    const page = pages.find((p) => p.path === req.query.path);
+// Кастомний ендпоінт отримання сторінки за шляхом ?path=...
+app.get(['/api/page', '/api/pages'], (req, res) => {
+  const requestedPath = req.query.path || '/';
+  const page = pages.find((p) => p.path === requestedPath);
 
-    if(!page){
-        return res.status(404).json({error: 'Page not found'})
-    }
+  if (!page) {
+    return res.status(404).json({
+      error: `Сторінку за шляхом "${requestedPath}" не знайдено`,
+      path: requestedPath,
+      statusCode: 404,
+    });
+  }
 
-    res.json(page);
-})
+  res.json(page);
+});
 
-app.listen(PORT, () => {
-    console.log(`Server works on http://localhost:${PORT}`);
-})
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`MCU Inventory API Server works on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
+

@@ -1,16 +1,14 @@
 {
-  "name": "backend",
+  "name": "mcu-inventory-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch --env-file=.env server.js"
-  },
-  "keywords": [],
+  "private": true,
   "type": "module",
+  "scripts": {
+    "dev": "node --env-file=.env server.js",
+    "start": "node server.js"
+  },
   "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1"
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
   }
 }

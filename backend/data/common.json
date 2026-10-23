@@ -1,20 +1,27 @@
 {
-"siteName": "Обсмажувальня кави «Зерно»",
-"menu": [
-{
-"label": "Переваги",
-"link": "#features"
-},
-{
-"label": "Відгуки",
-"link": "#testimonials"
-},
-{
-"label": "Контакти",
-"link": "#contacts"
-}
-],
-"footer": {
-"text": "Ми створюємо досконалий смак кави у самому серці Львова, ретельно обсмажуючи найкращі зелені зерна з усього світу."
-}
+  "siteName": "MCU Inventory System",
+  "headerPhone": "+380 (32) 258-12-40",
+  "dbStatus": "online",
+  "menu": [
+    {
+      "label": "Модулі платформи",
+      "link": "#features"
+    },
+    {
+      "label": "Номенклатура MCU",
+      "link": "#catalog"
+    },
+    {
+      "label": "Досвід лабораторії",
+      "link": "#testimonials"
+    },
+    {
+      "label": "Підключення та контакти",
+      "link": "#contacts"
+    }
+  ],
+  "footer": {
+    "text": "Єдина лабораторна веб-платформа обліку мікроконтролерів, інтерактивних розпіновок (Pinout Builder), адресних складських комірок та специфікацій інженерних проєктів (BOM).",
+    "systemInfo": "Payload CMS 3.0 • Neon Serverless PostgreSQL • Vite + TypeScript"
+  }
 }
