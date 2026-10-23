@@ -49,6 +49,18 @@ export const Contacts: Block = {
       required: true,
     },
     {
+      name: 'loginUrl',
+      type: 'text',
+      label: 'Посилання на вхід до системи (Login URL)',
+      defaultValue: 'http://127.0.0.1:8000/accounts/login/',
+    },
+    {
+      name: 'registerUrl',
+      type: 'text',
+      label: 'Посилання на реєстрацію в системі (Register URL)',
+      defaultValue: 'http://127.0.0.1:8000/accounts/register/',
+    },
+    {
       name: 'activeMonth',
       type: 'select',
       label: 'Поточний місяць ревізії складу',

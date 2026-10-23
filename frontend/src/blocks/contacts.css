@@ -79,6 +79,13 @@
   font-size: 0.95rem;
 }
 
+.contacts__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
 .contacts__meta {
   display: grid;
   gap: 12px;

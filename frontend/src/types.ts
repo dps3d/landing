@@ -166,6 +166,8 @@ export type ContactsBlock = BaseSectionBlock & {
   phone: string;
   email: string;
   address: string;
+  loginUrl?: string;
+  registerUrl?: string;
   activeMonth?: RevisionMonth | string;
   steps?: OnboardingStep[];
 };
