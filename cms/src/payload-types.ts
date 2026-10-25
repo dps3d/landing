@@ -130,7 +130,7 @@ export interface UserAuthOperations {
 export interface User {
   id: number;
   fullName?: string | null;
-  role?: 'admin' | 'instructor' | 'lab_assistant' | null;
+  role: 'admin' | 'instructor' | 'lab_assistant';
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -182,7 +182,7 @@ export interface Page {
   blocks?:
     | (
         | {
-            ancor?: string | null;
+            anchor?: string | null;
             badge?: string | null;
             title: string;
             subtitle: string;
@@ -191,7 +191,14 @@ export interface Page {
               | {
                   text: string;
                   link: string;
-                  variant: 'primary' | 'secondary';
+                  variant: 'primary' | 'secondary' | 'ghost';
+                  id?: string | null;
+                }[]
+              | null;
+            metrics?:
+              | {
+                  value: string;
+                  label: string;
                   id?: string | null;
                 }[]
               | null;
@@ -201,18 +208,97 @@ export interface Page {
           }
         | {
             anchor?: string | null;
+            badge?: string | null;
             title: string;
+            subtitle?: string | null;
             items?:
               | {
                   icon: string;
+                  moduleTag: 'Каталог та Pinout' | 'Колірні комірки' | 'Проєкти та BOM' | 'Рольова безпека';
                   title: string;
-                  text?: string | null;
+                  text: string;
+                  highlights?:
+                    | {
+                        point: string;
+                        id?: string | null;
+                      }[]
+                    | null;
                   id?: string | null;
                 }[]
               | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'features';
+          }
+        | {
+            anchor?: string | null;
+            badge?: string | null;
+            title: string;
+            subtitle?: string | null;
+            items?:
+              | {
+                  partNumber: string;
+                  category: string;
+                  packageType: 'LQFP-48' | 'QFN-56' | 'DIP-28' | 'SOIC-8' | 'Module';
+                  stockStatus: 'in_stock' | 'low_stock' | 'reserved';
+                  quantity: number;
+                  cellCode: string;
+                  architecture?: string | null;
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'showcase';
+          }
+        | {
+            anchor?: string | null;
+            badge?: string | null;
+            title: string;
+            subtitle?: string | null;
+            items?:
+              | {
+                  name: string;
+                  role: string;
+                  text: string;
+                  rating: number;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonials';
+          }
+        | {
+            anchor?: string | null;
+            badge?: string | null;
+            title: string;
+            subtitle?: string | null;
+            loginUrl?: string | null;
+            registerUrl?: string | null;
+            activeMonth:
+              | 'Вересень'
+              | 'Жовтень'
+              | 'Листопад'
+              | 'Грудень'
+              | 'Січень'
+              | 'Лютий'
+              | 'Березень'
+              | 'Квітень'
+              | 'Травень'
+              | 'Червень';
+            steps?:
+              | {
+                  stepBadge: string;
+                  title: string;
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contacts';
           }
       )[]
     | null;
@@ -302,6 +388,8 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  fullName?: T;
+  role?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -326,6 +414,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  componentCode?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -351,7 +440,7 @@ export interface PagesSelect<T extends boolean = true> {
         hero?:
           | T
           | {
-              ancor?: T;
+              anchor?: T;
               badge?: T;
               title?: T;
               subtitle?: T;
@@ -364,6 +453,13 @@ export interface PagesSelect<T extends boolean = true> {
                     variant?: T;
                     id?: T;
                   };
+              metrics?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };
@@ -371,11 +467,83 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               anchor?: T;
+              badge?: T;
               title?: T;
+              subtitle?: T;
               items?:
                 | T
                 | {
                     icon?: T;
+                    moduleTag?: T;
+                    title?: T;
+                    text?: T;
+                    highlights?:
+                      | T
+                      | {
+                          point?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        showcase?:
+          | T
+          | {
+              anchor?: T;
+              badge?: T;
+              title?: T;
+              subtitle?: T;
+              items?:
+                | T
+                | {
+                    partNumber?: T;
+                    category?: T;
+                    packageType?: T;
+                    stockStatus?: T;
+                    quantity?: T;
+                    cellCode?: T;
+                    architecture?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        testimonials?:
+          | T
+          | {
+              anchor?: T;
+              badge?: T;
+              title?: T;
+              subtitle?: T;
+              items?:
+                | T
+                | {
+                    name?: T;
+                    role?: T;
+                    text?: T;
+                    rating?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        contacts?:
+          | T
+          | {
+              anchor?: T;
+              badge?: T;
+              title?: T;
+              subtitle?: T;
+              loginUrl?: T;
+              registerUrl?: T;
+              activeMonth?: T;
+              steps?:
+                | T
+                | {
+                    stepBadge?: T;
                     title?: T;
                     text?: T;
                     id?: T;
@@ -435,7 +603,7 @@ export interface Common {
   id: number;
   siteName: string;
   headerPhone?: string | null;
-  dbStatus?: 'online' | 'maintenance' | null;
+  dbStatus: 'online' | 'maintenance';
   menu?:
     | {
         label: string;
@@ -443,8 +611,8 @@ export interface Common {
         id?: string | null;
       }[]
     | null;
-  footer?: {
-    text?: string | null;
+  footer: {
+    text: string;
     systemInfo?: string | null;
   };
   updatedAt?: string | null;
