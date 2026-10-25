@@ -4,15 +4,11 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import initialCommon from './data/common.json' with { type: 'json' };
+import initialPages from './data/pages.json' with { type: 'json' };
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-const initialCommon = JSON.parse(
-  fs.readFileSync(path.join(__dirname, 'data', 'common.json'), 'utf-8')
-);
-const initialPages = JSON.parse(
-  fs.readFileSync(path.join(__dirname, 'data', 'pages.json'), 'utf-8')
-);
 
 const app = express();
 
@@ -1020,6 +1016,11 @@ function renderAdminHtml() {
 }
 
 // Маршрут візуального редактора Payload CMS (/admin та /)
+app.get('/admin', (req, res) => {
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.send(renderAdminHtml());
+});
+
 app.use('/admin', (req, res) => {
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.send(renderAdminHtml());

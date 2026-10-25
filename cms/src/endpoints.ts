@@ -349,7 +349,7 @@ async function handleGetCommon(req: PayloadRequest): Promise<Response> {
       dbStatus: common.dbStatus || DEFAULT_COMMON.dbStatus,
       menu:
         Array.isArray(common.menu) && common.menu.length > 0
-          ? common.menu.map((item) => ({
+          ? common.menu.map((item: { label?: string; link?: string }) => ({
               label: item.label,
               link: item.link,
             }))
@@ -417,7 +417,7 @@ async function handleGetPage(req: PayloadRequest): Promise<Response> {
       title: pageDoc.title,
       blocks:
         rawBlocks.length > 0
-          ? rawBlocks.map((block) => normalizeBlock(block as unknown as Record<string, unknown>))
+          ? rawBlocks.map((block: unknown) => normalizeBlock(block as Record<string, unknown>))
           : DEFAULT_HOME_PAGE.blocks,
     }
 
