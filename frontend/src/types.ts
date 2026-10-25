@@ -160,12 +160,9 @@ export type TestimonialsBlock = BaseSectionBlock & {
   items: TestimonialItem[];
 };
 
-/** Схема блоку Contacts (контакти лабораторії та алгоритм підключення) */
+/** Схема блоку Contacts (підключення до системи та кнопки входу) */
 export type ContactsBlock = BaseSectionBlock & {
   type: 'contacts';
-  phone: string;
-  email: string;
-  address: string;
   loginUrl?: string;
   registerUrl?: string;
   activeMonth?: RevisionMonth | string;

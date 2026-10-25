@@ -31,24 +31,6 @@ export const Contacts: Block = {
       label: 'Підзаголовок секції',
     },
     {
-      name: 'phone',
-      type: 'text',
-      label: 'Контактний телефон лабораторії',
-      required: true,
-    },
-    {
-      name: 'email',
-      type: 'text',
-      label: 'Електронна пошта (Email)',
-      required: true,
-    },
-    {
-      name: 'address',
-      type: 'text',
-      label: 'Адреса та аудиторія лабораторії',
-      required: true,
-    },
-    {
       name: 'loginUrl',
       type: 'text',
       label: 'Посилання на вхід до системи (Login URL)',

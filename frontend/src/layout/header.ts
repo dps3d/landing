@@ -2,7 +2,6 @@ import type { CommonSettings, MenuItem } from '../types';
 
 export function header({
   siteName,
-  headerPhone,
   dbStatus = 'online',
   menu,
 }: CommonSettings): string {
@@ -34,11 +33,9 @@ export function header({
         ${navLinksHtml}
       </nav>
 
-      ${
-        headerPhone
-          ? `<a class="header__phone" href="tel:${headerPhone.replace(/[^\d+]/g, '')}">${headerPhone}</a>`
-          : ''
-      }
+      <a class="header__phone" href="http://127.0.0.1:8000/accounts/login/">
+        Увійти до системи →
+      </a>
     </header>
   `;
 }

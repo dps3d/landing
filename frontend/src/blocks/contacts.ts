@@ -6,9 +6,6 @@ export function contacts({
   badge,
   title,
   subtitle,
-  phone,
-  email,
-  address,
   loginUrl = 'http://127.0.0.1:8000/accounts/login/',
   registerUrl = 'http://127.0.0.1:8000/accounts/register/',
   activeMonth = 'Жовтень',
@@ -46,9 +43,6 @@ export function contacts({
       <div class="contacts__card">
         <div class="contacts__direct">
           <span class="contacts__label">Прямий зв'язок із лабораторією</span>
-          <a class="contacts__link" href="${loginUrl}">${phone}</a>
-          <a class="contacts__link" href="${loginUrl}">${email}</a>
-          <p class="contacts__address">📍 ${address}</p>
           <div class="contacts__actions">
             <a class="btn btn--primary" href="${loginUrl}">
               Увійти до системи (Логін) →
