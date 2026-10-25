@@ -36,7 +36,7 @@ export const Hero: Block = {
       type: 'upload',
       relationTo: 'media',
       label: 'Зображення Hero-секції',
-      required: true,
+      required: false,
     },
     {
       name: 'buttons',

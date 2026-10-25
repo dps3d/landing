@@ -37,13 +37,14 @@ export default buildConfig({
     'http://localhost:4173',
   ],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_SECRET || 'mcu-inventory-system-payload-secret-key',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: postgresAdapter({
+    push: true,
     pool: {
-      connectionString: process.env.DATABASE_URL || '',
+      connectionString: process.env.DATABASE_URL || process.env.DATABASE_URI || '',
     },
   }),
   sharp,
