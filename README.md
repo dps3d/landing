@@ -115,7 +115,7 @@ mcu_inventory-TS/
 - `testimonials.ts` — рендерить відгуки викладачів та інженерів лабораторії із зірковим рейтингом (`★`).
 - `contacts.ts` — рендерить 3 кроки підключення до системи (Onboarding), прямі контакти (`tel:`, `mailto:`) та поточний місяць ревізії складу.
 
-Верстка виконана у фірмовій колірній палітрі **MCU Inventory System (Refined Palette Theme: Smoky Black `#11120D`, Charcoal `#2A2529`, Olive Drab `#565449`, Bone `#D8CFBC`, Floral White `#FFFBF4`)** із використанням CSS Grid, Flexbox, флюїдної типографіки `clamp()` та медіа-запитів `@media (min-width: 768px)` і `@media (min-width: 1080px)` для повної адаптивності на смартфонах, планшетах і десктопах.
+Верстка виконана у фірмовій світлій інженерній колірній палітрі **MCU Inventory System (Clean White & Slate Engineering Palette: Canvas `#f8fafc`, Pure White `#ffffff`, Border `#e2e8f0`/`#cbd5e1`, Text `#0f172a`/`#334155`, Accent Royal Blue `#2563eb`)** із використанням CSS Grid, Flexbox, флюїдної типографіки `clamp()` та медіа-запитів `@media (min-width: 768px)` і `@media (min-width: 1080px)` для повної адаптивності на смартфонах, планшетах і десктопах.
 
 ### Обробка станів UI (Завантаження / Помилка / Готовність)
 

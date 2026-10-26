@@ -6,16 +6,24 @@
   <title>Анатомія лендингу — MCU Inventory System</title>
   <style>
     :root {
-      --color-bg: #11120d;
-      --color-surface: #2a2529;
-      --color-card: #201b1f;
-      --color-line: rgba(216, 207, 188, 0.16);
-      --color-heading: #fffbf4;
-      --color-text: #f3f0e7;
-      --color-bone: #d8cfbc;
-      --color-muted: #9e9788;
-      --color-accent: #565449;
-      --color-accent-soft: rgba(86, 84, 73, 0.35);
+      --color-bg: #f8fafc;
+      --color-surface: #ffffff;
+      --color-card: #ffffff;
+      --color-surface-hover: #f1f5f9;
+      --color-line: #e2e8f0;
+      --color-line-strong: #cbd5e1;
+      --color-heading: #0f172a;
+      --color-text: #334155;
+      --color-text-secondary: #475569;
+      --color-bone: #2563eb;
+      --color-muted: #64748b;
+      --color-accent: #2563eb;
+      --color-accent-hover: #1d4ed8;
+      --color-accent-soft: #eff6ff;
+      --color-accent-border: #bfdbfe;
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
 
       --tag-page: #2563eb;
       --tag-common: #7c3aed;
@@ -42,12 +50,13 @@
       gap: 10px 20px;
       align-items: center;
       padding: 12px 20px;
-      background: #191618;
+      background: var(--color-surface);
       border-bottom: 1px solid var(--color-line);
+      box-shadow: var(--shadow-sm);
       color: var(--color-heading);
       font-size: 0.85rem;
     }
-    .bar strong { font-size: 0.95rem; color: var(--color-bone); }
+    .bar strong { font-size: 0.95rem; color: var(--color-heading); }
     .legend { display: flex; flex-wrap: wrap; gap: 16px; }
     .legend span { display: inline-flex; align-items: center; gap: 6px; }
     .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
@@ -56,13 +65,13 @@
       font: inherit;
       padding: 6px 14px;
       border-radius: 999px;
-      border: 1px solid var(--color-bone);
-      background: var(--color-bone);
-      color: #11120d;
+      border: 1px solid var(--color-accent);
+      background: var(--color-accent);
+      color: #ffffff;
       font-weight: 700;
       cursor: pointer;
     }
-    .toggle[aria-pressed="false"] { background: transparent; color: var(--color-bone); }
+    .toggle[aria-pressed="false"] { background: transparent; color: var(--color-accent); }
 
     #app { max-width: 1200px; margin: 0 auto; padding-inline: 18px; }
     .section-title { margin: 0 0 12px; color: var(--color-heading); font-size: clamp(1.5rem, 3vw, 2.2rem); }
@@ -71,26 +80,28 @@
     .header { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; padding-block: 24px; border-bottom: 1px solid var(--color-line); }
     .header__logo { color: var(--color-heading); font-size: 1.3rem; font-weight: 800; text-decoration: none; }
     .header__nav { display: flex; flex-wrap: wrap; gap: 20px; }
-    .header__link { color: var(--color-bone); text-decoration: none; }
-    .header__status { padding: 4px 10px; border-radius: 999px; background: rgba(16, 185, 129, 0.16); color: #6ee7b7; font-family: monospace; font-size: 0.76rem; }
+    .header__link { color: var(--color-text-secondary); text-decoration: none; }
+    .header__link:hover { color: var(--color-accent); }
+    .header__status { padding: 4px 10px; border-radius: 999px; background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; font-family: monospace; font-size: 0.76rem; }
 
     .btn { display: inline-block; padding: 12px 22px; border-radius: 10px; font-weight: 600; text-decoration: none; }
-    .btn--primary { background: var(--color-bone); color: #11120d; }
-    .btn--secondary { background: var(--color-accent); color: var(--color-heading); }
+    .btn--primary { background: var(--color-accent); color: #ffffff; }
+    .btn--secondary { background: var(--color-surface); color: var(--color-heading); border: 1px solid var(--color-line-strong); box-shadow: var(--shadow-sm); }
 
-    .hero { display: grid; gap: 32px; align-items: center; padding: 36px; margin-block: 28px; border-radius: 20px; background: var(--color-surface); border: 1px solid var(--color-line); }
+    .hero { display: grid; gap: 32px; align-items: center; padding: 36px; margin-block: 28px; border-radius: 20px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 1px solid var(--color-line); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
     .hero__content { display: grid; gap: 16px; justify-items: start; }
-    .hero__badge { padding: 4px 12px; border-radius: 999px; background: var(--color-accent-soft); color: var(--color-bone); font-size: 0.82rem; font-weight: 600; }
+    .hero__badge { padding: 4px 12px; border-radius: 999px; background: var(--color-accent-soft); border: 1px solid var(--color-accent-border); color: var(--color-accent); font-size: 0.82rem; font-weight: 600; }
     .hero__title { margin: 0; color: var(--color-heading); font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.1; }
     .hero__subtitle { margin: 0; color: var(--color-muted); }
     .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
     .hero__visual-box {
       padding: 24px;
       border-radius: 16px;
-      background: #191618;
+      background: #ffffff;
       border: 1px solid var(--color-line);
+      box-shadow: var(--shadow-sm);
       font-family: monospace;
-      color: var(--color-bone);
+      color: var(--color-heading);
     }
     @media (min-width: 820px) { .hero { grid-template-columns: 1.2fr 0.8fr; } }
 
@@ -102,12 +113,12 @@
       .grid-3 { grid-template-columns: repeat(3, 1fr); }
     }
 
-    .card { padding: 22px; border-radius: 16px; background: var(--color-card); border: 1px solid var(--color-line); }
+    .card { padding: 22px; border-radius: 16px; background: var(--color-card); border: 1px solid var(--color-line); box-shadow: var(--shadow-sm); }
     .card h3 { margin: 10px 0 6px; color: var(--color-heading); }
     .card p { margin: 0; color: var(--color-muted); font-size: 0.92rem; }
-    .mono-pill { display: inline-block; padding: 3px 8px; border-radius: 6px; background: var(--color-surface); font-family: monospace; font-size: 0.76rem; color: var(--color-bone); }
+    .mono-pill { display: inline-block; padding: 3px 8px; border-radius: 6px; background: #f1f5f9; border: 1px solid var(--color-line); font-family: monospace; font-size: 0.76rem; color: var(--color-heading); }
 
-    .contacts { display: grid; gap: 12px; justify-items: start; padding: 36px; margin-block: 44px; border-radius: 20px; background: var(--color-surface); border: 1px solid var(--color-line); }
+    .contacts { display: grid; gap: 12px; justify-items: start; padding: 36px; margin-block: 44px; border-radius: 20px; background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border: 1px solid #bfdbfe; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08); }
     .contacts__link { color: var(--color-heading); font-size: 1.4rem; font-weight: 700; text-decoration: none; }
     .footer { padding-block: 28px; border-top: 1px solid var(--color-line); color: var(--color-muted); font-size: 0.88rem; }
 
@@ -195,7 +206,7 @@
         </div>
         <div class="hero__visual-box" data-f="image.src + image.alt">
           <div>[STM32F103C8T6 • LQFP-48 PINOUT]</div>
-          <div style="margin-top:8px; color:#6ee7b7;">ORG-A1 • R1-C2 • In Stock: 34 pcs</div>
+          <div style="margin-top:8px; color:#047857; font-weight:600;">ORG-A1 • R1-C2 • In Stock: 34 pcs</div>
         </div>
       </section>
 

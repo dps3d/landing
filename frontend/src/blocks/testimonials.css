@@ -17,6 +17,14 @@
   border-radius: 16px;
   background: var(--color-card);
   border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.testimonial:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-line-strong);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .testimonial__rating {

@@ -1,25 +1,42 @@
 /* ==========================================================================
-   MCU Inventory System — Refined Palette Theme (Base Styles & UI States)
-   Smoky Black:  #11120D
-   Charcoal:     #2A2529
-   Olive Drab:   #565449
-   Bone:         #D8CFBC
-   Pale Ivory:   #F3F0E7
-   Floral White: #FFFBF4
+   MCU Inventory System — Clean White & Slate Engineering Palette (Base Styles & UI States)
+   Canvas:         #f8fafc (Slate 50)
+   Surface/Card:   #ffffff (Pure White)
+   Hover/Subtle:   #f1f5f9 (Slate 100)
+   Border Subtle:  #e2e8f0 (Slate 200)
+   Border Strong:  #cbd5e1 (Slate 300)
+   Text Primary:   #0f172a (Slate 900)
+   Text Body:      #334155 (Slate 700)
+   Text Secondary: #475569 (Slate 600)
+   Text Muted:     #64748b (Slate 500)
+   Accent Primary: #2563eb (Vibrant Royal Blue)
+   Accent Hover:   #1d4ed8 (Deep Blue)
+   Accent Soft:    #eff6ff (Blue 50)
+   Accent Border:  #bfdbfe (Blue 200)
    ========================================================================== */
 
 :root {
-  --color-bg: #11120d;
-  --color-surface: #2a2529;
-  --color-card: #201b1f;
-  --color-line: rgba(216, 207, 188, 0.16);
-  --color-heading: #fffbf4;
-  --color-text: #f3f0e7;
-  --color-bone: #d8cfbc;
-  --color-muted: #9e9788;
-  --color-accent: #565449;
-  --color-accent-hover: #6e6b5e;
-  --color-accent-soft: rgba(86, 84, 73, 0.35);
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-card: #ffffff;
+  --color-surface-hover: #f1f5f9;
+  --color-line: #e2e8f0;
+  --color-line-strong: #cbd5e1;
+  --color-heading: #0f172a;
+  --color-text: #334155;
+  --color-text-secondary: #475569;
+  --color-bone: #2563eb;
+  --color-muted: #64748b;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-soft: #eff6ff;
+  --color-accent-border: #bfdbfe;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 10px 20px -5px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
 
   --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', Consolas, monospace;
@@ -63,8 +80,9 @@ img {
   margin-top: 12px;
   padding: 8px 14px;
   border-radius: 10px;
-  background: #191618;
+  background: var(--color-surface);
   border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-sm);
   font-size: 0.8rem;
   color: var(--color-muted);
 }
@@ -74,7 +92,11 @@ img {
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  color: var(--color-bone);
+  color: var(--color-text-secondary);
+}
+
+.demo-toolbar__label strong {
+  color: var(--color-accent);
 }
 
 .demo-toolbar__controls {
@@ -87,7 +109,7 @@ img {
   padding: 4px 12px;
   border-radius: 999px;
   border: 1px solid var(--color-line);
-  background: var(--color-card);
+  background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -96,14 +118,17 @@ img {
 }
 
 .demo-btn:hover {
-  border-color: var(--color-bone);
+  background: var(--color-surface-hover);
+  border-color: var(--color-line-strong);
+  color: var(--color-heading);
 }
 
 .demo-btn--active {
-  background: var(--color-bone);
-  color: #11120d;
-  border-color: var(--color-bone);
+  background: var(--color-accent);
+  color: #ffffff;
+  border-color: var(--color-accent);
   font-weight: 700;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.3);
 }
 
 /* ---------- Шапка сайту (Header з Globals: Common) ---------- */
@@ -144,6 +169,7 @@ img {
   border-radius: 8px;
   background: var(--color-surface);
   border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-sm);
   font-size: 1rem;
 }
 
@@ -159,15 +185,15 @@ img {
 }
 
 .status-pill--ready {
-  background: rgba(16, 185, 129, 0.14);
-  color: #6ee7b7;
-  border: 1px solid rgba(16, 185, 129, 0.32);
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
 }
 
 .status-pill--warn {
-  background: rgba(245, 158, 11, 0.15);
-  color: #fcd34d;
-  border: 1px solid rgba(245, 158, 11, 0.35);
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
 }
 
 .status-pill__dot {
@@ -184,7 +210,7 @@ img {
 }
 
 .header__link {
-  color: var(--color-bone);
+  color: var(--color-text-secondary);
   text-decoration: none;
   font-size: 0.94rem;
   font-weight: 500;
@@ -192,18 +218,27 @@ img {
 }
 
 .header__link:hover {
-  color: var(--color-heading);
+  color: var(--color-accent);
 }
 
 .header__phone {
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 8px;
-  background: var(--color-card);
-  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-strong);
   color: var(--color-heading);
   font-family: var(--font-mono);
   font-size: 0.82rem;
+  font-weight: 600;
   text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.15s ease;
+}
+
+.header__phone:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 /* ---------- Типографіка секцій та Кнопки ---------- */
@@ -217,8 +252,8 @@ img {
   padding: 4px 12px;
   border-radius: 999px;
   background: var(--color-accent-soft);
-  border: 1px solid var(--color-line);
-  color: var(--color-bone);
+  border: 1px solid var(--color-accent-border);
+  color: var(--color-accent);
   font-family: var(--font-mono);
   font-size: 0.76rem;
   font-weight: 600;
@@ -251,35 +286,44 @@ img {
 }
 
 .btn--primary {
-  background: var(--color-bone);
-  color: #11120d;
-  border: 1px solid var(--color-bone);
+  background: var(--color-accent);
+  color: #ffffff;
+  border: 1px solid var(--color-accent);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
 }
 
 .btn--primary:hover {
-  background: #fffbf4;
-  border-color: #fffbf4;
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
 }
 
 .btn--secondary {
-  background: var(--color-accent);
+  background: var(--color-surface);
   color: var(--color-heading);
-  border: 1px solid rgba(216, 207, 188, 0.25);
+  border: 1px solid var(--color-line-strong);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn--secondary:hover {
-  background: var(--color-accent-hover);
+  background: var(--color-surface-hover);
+  border-color: #94a3b8;
+  color: var(--color-heading);
+  transform: translateY(-1px);
 }
 
 .btn--ghost {
   background: transparent;
-  color: var(--color-bone);
+  color: var(--color-accent);
   border: 1px solid var(--color-line);
 }
 
 .btn--ghost:hover {
-  border-color: var(--color-bone);
-  color: var(--color-heading);
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent-border);
+  color: var(--color-accent-hover);
 }
 
 /* ---------- Футер (Footer з Globals: Common) ---------- */
@@ -307,16 +351,18 @@ img {
 .footer__text {
   margin: 6px 0 0;
   max-width: 65ch;
+  color: var(--color-muted);
 }
 
 .footer__stack-badge {
   padding: 6px 12px;
   border-radius: 8px;
-  background: var(--color-card);
+  background: var(--color-surface);
   border: 1px solid var(--color-line);
-  color: var(--color-bone);
+  color: var(--color-text-secondary);
   font-family: var(--font-mono);
   font-size: 0.78rem;
+  box-shadow: var(--shadow-sm);
 }
 
 /* ---------- СТАНИ UI: 1. Завантаження (Loading) та 2. Помилка (Error) ---------- */
@@ -324,22 +370,23 @@ img {
   margin-block: 48px;
   padding: 40px 32px;
   border-radius: 20px;
-  background: var(--color-card);
+  background: var(--color-surface);
   border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-md);
   text-align: center;
 }
 
 .ui-state-box--error {
-  border-color: rgba(239, 68, 68, 0.45);
-  background: linear-gradient(145deg, rgba(239, 68, 68, 0.1) 0%, #201b1f 100%);
+  border-color: #fecaca;
+  background: linear-gradient(145deg, #fef2f2 0%, #ffffff 100%);
 }
 
 .ui-spinner {
   width: 44px;
   height: 44px;
   margin: 0 auto 18px;
-  border: 3px solid rgba(216, 207, 188, 0.2);
-  border-top-color: var(--color-bone);
+  border: 3px solid #e2e8f0;
+  border-top-color: var(--color-accent);
   border-radius: 50%;
   animation: mcu-spin 0.85s linear infinite;
 }
@@ -361,15 +408,15 @@ img {
 }
 
 .ui-state-box__badge--loading {
-  background: rgba(59, 130, 246, 0.16);
-  color: #93c5fd;
-  border: 1px solid rgba(59, 130, 246, 0.35);
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
 }
 
 .ui-state-box__badge--error {
-  background: rgba(239, 68, 68, 0.18);
-  color: #fca5a5;
-  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
 }
 
 .ui-state-box__title {
@@ -390,9 +437,9 @@ img {
   margin-bottom: 22px;
   padding: 10px 16px;
   border-radius: 8px;
-  background: #141113;
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: #fca5a5;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
   font-family: var(--font-mono);
   font-size: 0.84rem;
 }
@@ -408,7 +455,7 @@ img {
 .skeleton-card {
   padding: 20px;
   border-radius: 14px;
-  background: var(--color-surface);
+  background: var(--color-bg);
   border: 1px solid var(--color-line);
 }
 
@@ -416,7 +463,7 @@ img {
   height: 12px;
   margin-bottom: 10px;
   border-radius: 6px;
-  background: rgba(216, 207, 188, 0.12);
+  background: #e2e8f0;
 }
 
 .skeleton-line--short {

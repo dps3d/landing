@@ -15,12 +15,14 @@
   border-radius: 16px;
   background: var(--color-card);
   border: 1px solid var(--color-line);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(216, 207, 188, 0.34);
+  border-color: var(--color-line-strong);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .feature-card__top {
@@ -37,7 +39,7 @@
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: var(--color-surface);
+  background: #f8fafc;
   border: 1px solid var(--color-line);
   font-size: 1.4rem;
 }
@@ -45,11 +47,12 @@
 .feature-card__tag {
   padding: 4px 10px;
   border-radius: 999px;
-  background: rgba(86, 84, 73, 0.32);
-  border: 1px solid rgba(216, 207, 188, 0.16);
-  color: var(--color-bone);
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-border);
+  color: var(--color-accent);
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  font-weight: 600;
 }
 
 .feature-card__title {
@@ -75,7 +78,7 @@
 }
 
 .feature-card__list li::marker {
-  color: var(--color-bone);
+  color: var(--color-accent);
 }
 
 @media (min-width: 768px) {
