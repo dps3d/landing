@@ -3,29 +3,117 @@ import { API_URL, getCommon, getPage } from './api';
 import { header } from './layout/header';
 import { footer } from './layout/footer';
 import { renderBlocks } from './renderBlocks';
-import type { LandingBundle, UIState } from './types';
+import type { LandingBundle, ThemeMode, UIState } from './types';
 
 const app = document.querySelector<HTMLDivElement>('#app');
+const THEME_STORAGE_KEY = 'mcu_theme';
 
 /**
- * Рендеринг верхньої панелі для швидкої демонстрації трьох станів UI (Вимога 3.2)
+ * Отримання початкової теми: збережена в LocalStorage або системна
  */
-function renderDemoToolbar(activeStatus: UIState<LandingBundle>['status']): string {
+function getInitialTheme(): ThemeMode {
+  try {
+    const saved = localStorage.getItem(THEME_STORAGE_KEY);
+    if (saved === 'dark' || saved === 'light') return saved;
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+  } catch {
+    // fallback
+  }
+  return 'light';
+}
+
+let currentTheme: ThemeMode = getInitialTheme();
+document.documentElement.setAttribute('data-theme', currentTheme);
+
+/**
+ * Встановлення та синхронізація теми оформлення
+ */
+function setTheme(newTheme: ThemeMode): void {
+  currentTheme = newTheme;
+  document.documentElement.setAttribute('data-theme', newTheme);
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+  } catch {
+    // ignore
+  }
+
+  // Оновлюємо ілюстрацію плати STM32 у блоці Hero
+  const heroImg = document.querySelector<HTMLImageElement>('.hero__image');
+  if (heroImg) {
+    heroImg.src = newTheme === 'dark' ? '/mcu-hero-board-dark.svg' : '/mcu-hero-board.svg';
+  }
+
+  // Оновлюємо кнопку в шапці (Header)
+  const themeToggle = document.querySelector<HTMLButtonElement>('#themeToggle');
+  if (themeToggle) {
+    const nextTheme: ThemeMode = newTheme === 'dark' ? 'light' : 'dark';
+    const nextIcon = newTheme === 'dark' ? '☀️' : '🌙';
+    const nextLabel = newTheme === 'dark' ? 'Світла тема' : 'Темна тема';
+    themeToggle.setAttribute('data-theme-target', nextTheme);
+    themeToggle.setAttribute('title', `Перемкнути на: ${nextLabel}`);
+    const iconSpan = themeToggle.querySelector('.theme-toggle__icon');
+    const labelSpan = themeToggle.querySelector('.theme-toggle__label');
+    if (iconSpan) iconSpan.textContent = nextIcon;
+    if (labelSpan) labelSpan.textContent = nextLabel;
+  }
+
+  // Оновлюємо активний стан кнопок теми в тулбарі
+  const themeBtns = document.querySelectorAll<HTMLButtonElement>('[data-theme-set]');
+  themeBtns.forEach((btn) => {
+    const btnTheme = btn.getAttribute('data-theme-set');
+    if (btnTheme === newTheme) {
+      btn.classList.add('demo-btn--active');
+    } else {
+      btn.classList.remove('demo-btn--active');
+    }
+  });
+
+  const themeLabelStrong = document.querySelector<HTMLElement>('.demo-toolbar__theme-val');
+  if (themeLabelStrong) {
+    themeLabelStrong.textContent = newTheme === 'dark' ? 'ТЕМНА' : 'СВІТЛА';
+  }
+}
+
+/**
+ * Рендеринг верхньої панелі для швидкої демонстрації трьох станів UI (Вимога 3.2) та перемикача тем
+ */
+function renderDemoToolbar(
+  activeStatus: UIState<LandingBundle>['status'],
+  theme: ThemeMode
+): string {
   return `
-    <div class="demo-toolbar" role="region" aria-label="Перемикач станів інтерфейсу">
-      <span class="demo-toolbar__label">
-        ⚡ Стан UI (TypeScript Union State): <strong>${activeStatus.toUpperCase()}</strong>
-      </span>
-      <div class="demo-toolbar__controls">
-        <button type="button" class="demo-btn ${activeStatus === 'ready' ? 'demo-btn--active' : ''}" data-demo-state="ready">
-          1. Готовність (Ready)
-        </button>
-        <button type="button" class="demo-btn ${activeStatus === 'loading' ? 'demo-btn--active' : ''}" data-demo-state="loading">
-          2. Завантаження (Loading)
-        </button>
-        <button type="button" class="demo-btn ${activeStatus === 'error' ? 'demo-btn--active' : ''}" data-demo-state="error">
-          3. Помилка API (Error)
-        </button>
+    <div class="demo-toolbar" role="region" aria-label="Перемикач станів інтерфейсу та колірної теми">
+      <div class="demo-toolbar__group">
+        <span class="demo-toolbar__label">
+          ⚡ Стан UI (TypeScript Union State): <strong>${activeStatus.toUpperCase()}</strong>
+        </span>
+        <div class="demo-toolbar__controls">
+          <button type="button" class="demo-btn ${activeStatus === 'ready' ? 'demo-btn--active' : ''}" data-demo-state="ready">
+            1. Готовність (Ready)
+          </button>
+          <button type="button" class="demo-btn ${activeStatus === 'loading' ? 'demo-btn--active' : ''}" data-demo-state="loading">
+            2. Завантаження (Loading)
+          </button>
+          <button type="button" class="demo-btn ${activeStatus === 'error' ? 'demo-btn--active' : ''}" data-demo-state="error">
+            3. Помилка API (Error)
+          </button>
+        </div>
+      </div>
+
+      <div class="demo-toolbar__group demo-toolbar__theme-group">
+        <span class="demo-toolbar__label">
+          🎨 Тема: <strong class="demo-toolbar__theme-val">${theme === 'dark' ? 'ТЕМНА' : 'СВІТЛА'}</strong>
+        </span>
+        <div class="demo-toolbar__controls">
+          <button type="button" class="demo-btn demo-btn--theme ${theme === 'light' ? 'demo-btn--active' : ''}" data-theme-set="light">
+            ☀️ Світла
+          </button>
+          <button type="button" class="demo-btn demo-btn--theme ${theme === 'dark' ? 'demo-btn--active' : ''}" data-theme-set="dark">
+            🌙 Темна
+          </button>
+        </div>
       </div>
     </div>
   `;
@@ -39,7 +127,7 @@ function renderAppState(state: UIState<LandingBundle>): void {
 
   if (state.status === 'loading') {
     app.innerHTML = `
-      ${renderDemoToolbar('loading')}
+      ${renderDemoToolbar('loading', currentTheme)}
       <div class="ui-state-box" role="status" aria-live="polite">
         <div class="ui-spinner" aria-hidden="true"></div>
         <span class="ui-state-box__badge ui-state-box__badge--loading">STATE: LOADING</span>
@@ -65,12 +153,13 @@ function renderAppState(state: UIState<LandingBundle>): void {
       </div>
     `;
     bindDemoButtons();
+    bindThemeToggles();
     return;
   }
 
   if (state.status === 'error') {
     app.innerHTML = `
-      ${renderDemoToolbar('error')}
+      ${renderDemoToolbar('error', currentTheme)}
       <div class="ui-state-box ui-state-box--error" role="alert">
         <span class="ui-state-box__badge ui-state-box__badge--error">STATE: ERROR • TRY...CATCH</span>
         <h2 class="ui-state-box__title">Щось пішло не так під час звернення до API</h2>
@@ -89,6 +178,7 @@ function renderAppState(state: UIState<LandingBundle>): void {
       </div>
     `;
     bindDemoButtons();
+    bindThemeToggles();
     const retryBtn = document.querySelector<HTMLButtonElement>('#retryBtn');
     retryBtn?.addEventListener('click', () => {
       void start();
@@ -101,12 +191,13 @@ function renderAppState(state: UIState<LandingBundle>): void {
   document.title = `${page.title} — ${common.siteName}`;
 
   app.innerHTML = `
-    ${renderDemoToolbar('ready')}
-    ${header(common)}
+    ${renderDemoToolbar('ready', currentTheme)}
+    ${header(common, currentTheme)}
     <main>${renderBlocks(page.blocks)}</main>
     ${footer(common)}
   `;
   bindDemoButtons();
+  bindThemeToggles();
 }
 
 /**
@@ -130,6 +221,27 @@ function bindDemoButtons(): void {
         });
       } else {
         void start('ready');
+      }
+    });
+  });
+}
+
+/**
+ * Прив'язка обробників кліку для перемикачів теми (у шапці та в тулбарі)
+ */
+function bindThemeToggles(): void {
+  const headerToggle = document.querySelector<HTMLButtonElement>('#themeToggle');
+  headerToggle?.addEventListener('click', () => {
+    const target = headerToggle.getAttribute('data-theme-target') as ThemeMode;
+    setTheme(target || (currentTheme === 'dark' ? 'light' : 'dark'));
+  });
+
+  const themeBtns = document.querySelectorAll<HTMLButtonElement>('[data-theme-set]');
+  themeBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-theme-set') as ThemeMode;
+      if (target === 'light' || target === 'dark') {
+        setTheme(target);
       }
     });
   });

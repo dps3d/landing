@@ -17,13 +17,22 @@
   background: var(--color-surface);
   border: 1px solid var(--color-line);
   box-shadow: var(--shadow-card);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .mcu-card:hover {
   transform: translateY(-2px);
   border-color: var(--color-line-strong);
   box-shadow: var(--shadow-card-hover);
+}
+
+[data-theme="dark"] .mcu-card {
+  background: var(--color-surface);
+  border-color: var(--color-line);
+}
+
+[data-theme="dark"] .mcu-card:hover {
+  border-color: rgba(216, 207, 188, 0.3);
 }
 
 .mcu-card__header {
@@ -48,6 +57,10 @@
   font-size: 0.82rem;
 }
 
+[data-theme="dark"] .mcu-card__category {
+  color: var(--color-bone);
+}
+
 .mcu-card__pkg {
   padding: 4px 10px;
   border-radius: 6px;
@@ -60,6 +73,12 @@
   white-space: nowrap;
 }
 
+[data-theme="dark"] .mcu-card__pkg {
+  background: var(--color-card);
+  border-color: var(--color-line);
+  color: var(--color-heading);
+}
+
 .mcu-card__arch {
   padding: 8px 10px;
   border-radius: 8px;
@@ -69,6 +88,12 @@
   font-family: var(--font-mono);
   font-size: 0.76rem;
   line-height: 1.45;
+}
+
+[data-theme="dark"] .mcu-card__arch {
+  background: #171416;
+  border: 1px dashed rgba(216, 207, 188, 0.18);
+  color: var(--color-bone);
 }
 
 .mcu-card__desc {
@@ -95,6 +120,10 @@
   font-weight: 600;
 }
 
+[data-theme="dark"] .mcu-card__cell {
+  color: var(--color-text);
+}
+
 .stock-badge {
   padding: 3px 10px;
   border-radius: 999px;
@@ -118,6 +147,24 @@
   background: #eff6ff;
   color: #1d4ed8;
   border: 1px solid #bfdbfe;
+}
+
+[data-theme="dark"] .stock-badge--ok {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+[data-theme="dark"] .stock-badge--low {
+  background: rgba(245, 158, 11, 0.16);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+[data-theme="dark"] .stock-badge--reserved {
+  background: rgba(59, 130, 246, 0.16);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.4);
 }
 
 @media (min-width: 768px) {

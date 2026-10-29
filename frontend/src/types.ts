@@ -18,6 +18,9 @@ export type PagePath = string;
 /** Псевдонім типу для HTML-якоря секції */
 export type SectionAnchor = string;
 
+/** Режим колірної теми оформлення сайту (Union Type: Світла / Темна) */
+export type ThemeMode = 'light' | 'dark';
+
 /** Варіанти стилізації кнопок у Hero-блоці (Union Type) */
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 

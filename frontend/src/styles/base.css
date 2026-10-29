@@ -1,21 +1,11 @@
 /* ==========================================================================
-   MCU Inventory System — Clean White & Slate Engineering Palette (Base Styles & UI States)
-   Canvas:         #f8fafc (Slate 50)
-   Surface/Card:   #ffffff (Pure White)
-   Hover/Subtle:   #f1f5f9 (Slate 100)
-   Border Subtle:  #e2e8f0 (Slate 200)
-   Border Strong:  #cbd5e1 (Slate 300)
-   Text Primary:   #0f172a (Slate 900)
-   Text Body:      #334155 (Slate 700)
-   Text Secondary: #475569 (Slate 600)
-   Text Muted:     #64748b (Slate 500)
-   Accent Primary: #2563eb (Vibrant Royal Blue)
-   Accent Hover:   #1d4ed8 (Deep Blue)
-   Accent Soft:    #eff6ff (Blue 50)
-   Accent Border:  #bfdbfe (Blue 200)
+   MCU Inventory System — Dual-Theme Engineering Palette
+   1. Light Theme: Clean White & Slate
+   2. Dark Theme:  Refined Smoky Black, Charcoal, Olive Drab & Bone
    ========================================================================== */
 
 :root {
+  /* Світла тема (Default: Clean White & Slate) */
   --color-bg: #f8fafc;
   --color-surface: #ffffff;
   --color-card: #ffffff;
@@ -42,6 +32,31 @@
   --font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', Consolas, monospace;
 }
 
+[data-theme="dark"] {
+  /* Темна тема (Refined Palette: Smoky Black, Charcoal, Olive Drab, Bone) */
+  --color-bg: #11120d;
+  --color-surface: #2a2529;
+  --color-card: #201b1f;
+  --color-surface-hover: #352f34;
+  --color-line: rgba(216, 207, 188, 0.16);
+  --color-line-strong: rgba(216, 207, 188, 0.28);
+  --color-heading: #fffbf4;
+  --color-text: #f3f0e7;
+  --color-text-secondary: #d8cfbc;
+  --color-bone: #d8cfbc;
+  --color-muted: #9e9788;
+  --color-accent: #565449;
+  --color-accent-hover: #6e6b5e;
+  --color-accent-soft: rgba(86, 84, 73, 0.35);
+  --color-accent-border: rgba(216, 207, 188, 0.22);
+
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -57,6 +72,7 @@ body {
   font-family: var(--font-sans);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #app {
@@ -70,13 +86,13 @@ img {
   display: block;
 }
 
-/* ---------- Демонстраційна панель перемикання станів UI (Вимога 3.2) ---------- */
+/* ---------- Демонстраційна панель перемикання станів UI та теми (Вимога 3.2) ---------- */
 .demo-toolbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 10px 16px;
+  gap: 12px 20px;
   margin-top: 12px;
   padding: 8px 14px;
   border-radius: 10px;
@@ -85,6 +101,19 @@ img {
   box-shadow: var(--shadow-sm);
   font-size: 0.8rem;
   color: var(--color-muted);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+[data-theme="dark"] .demo-toolbar {
+  background: #191618;
+  border-color: var(--color-line);
+}
+
+.demo-toolbar__group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
 
 .demo-toolbar__label {
@@ -97,6 +126,10 @@ img {
 
 .demo-toolbar__label strong {
   color: var(--color-accent);
+}
+
+[data-theme="dark"] .demo-toolbar__label strong {
+  color: var(--color-bone);
 }
 
 .demo-toolbar__controls {
@@ -129,6 +162,25 @@ img {
   border-color: var(--color-accent);
   font-weight: 700;
   box-shadow: 0 1px 3px rgba(37, 99, 235, 0.3);
+}
+
+[data-theme="dark"] .demo-btn {
+  background: var(--color-card);
+  border-color: var(--color-line);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .demo-btn:hover {
+  background: var(--color-surface);
+  border-color: var(--color-bone);
+  color: var(--color-heading);
+}
+
+[data-theme="dark"] .demo-btn--active {
+  background: var(--color-bone);
+  color: #11120d;
+  border-color: var(--color-bone);
+  box-shadow: 0 1px 3px rgba(216, 207, 188, 0.2);
 }
 
 /* ---------- Шапка сайту (Header з Globals: Common) ---------- */
@@ -196,6 +248,18 @@ img {
   border: 1px solid #fde68a;
 }
 
+[data-theme="dark"] .status-pill--ready {
+  background: rgba(16, 185, 129, 0.14);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.32);
+}
+
+[data-theme="dark"] .status-pill--warn {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
 .status-pill__dot {
   width: 7px;
   height: 7px;
@@ -221,6 +285,61 @@ img {
   color: var(--color-accent);
 }
 
+[data-theme="dark"] .header__link {
+  color: var(--color-bone);
+}
+
+[data-theme="dark"] .header__link:hover {
+  color: var(--color-heading);
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-heading);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.15s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+[data-theme="dark"] .theme-toggle {
+  background: var(--color-card);
+  border-color: var(--color-line);
+  color: var(--color-bone);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-bone);
+  color: var(--color-heading);
+}
+
+.theme-toggle__icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
 .header__phone {
   padding: 6px 14px;
   border-radius: 8px;
@@ -241,6 +360,18 @@ img {
   color: var(--color-accent);
 }
 
+[data-theme="dark"] .header__phone {
+  background: var(--color-card);
+  border-color: var(--color-line);
+  color: var(--color-heading);
+}
+
+[data-theme="dark"] .header__phone:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-bone);
+  color: var(--color-bone);
+}
+
 /* ---------- Типографіка секцій та Кнопки ---------- */
 .section-header {
   margin-bottom: 28px;
@@ -257,6 +388,10 @@ img {
   font-family: var(--font-mono);
   font-size: 0.76rem;
   font-weight: 600;
+}
+
+[data-theme="dark"] .section-tag {
+  color: var(--color-bone);
 }
 
 .section-title {
@@ -300,6 +435,20 @@ img {
   box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
 }
 
+[data-theme="dark"] .btn--primary {
+  background: var(--color-bone);
+  color: #11120d;
+  border: 1px solid var(--color-bone);
+  box-shadow: 0 4px 14px rgba(216, 207, 188, 0.15);
+}
+
+[data-theme="dark"] .btn--primary:hover {
+  background: #fffbf4;
+  border-color: #fffbf4;
+  color: #11120d;
+  box-shadow: 0 6px 20px rgba(255, 251, 244, 0.25);
+}
+
 .btn--secondary {
   background: var(--color-surface);
   color: var(--color-heading);
@@ -314,6 +463,18 @@ img {
   transform: translateY(-1px);
 }
 
+[data-theme="dark"] .btn--secondary {
+  background: var(--color-accent);
+  color: var(--color-heading);
+  border: 1px solid rgba(216, 207, 188, 0.25);
+}
+
+[data-theme="dark"] .btn--secondary:hover {
+  background: var(--color-accent-hover);
+  border-color: rgba(216, 207, 188, 0.4);
+  color: var(--color-heading);
+}
+
 .btn--ghost {
   background: transparent;
   color: var(--color-accent);
@@ -324,6 +485,15 @@ img {
   background: var(--color-accent-soft);
   border-color: var(--color-accent-border);
   color: var(--color-accent-hover);
+}
+
+[data-theme="dark"] .btn--ghost {
+  color: var(--color-bone);
+}
+
+[data-theme="dark"] .btn--ghost:hover {
+  border-color: var(--color-bone);
+  color: var(--color-heading);
 }
 
 /* ---------- Футер (Footer з Globals: Common) ---------- */
@@ -365,6 +535,11 @@ img {
   box-shadow: var(--shadow-sm);
 }
 
+[data-theme="dark"] .footer__stack-badge {
+  background: var(--color-card);
+  color: var(--color-bone);
+}
+
 /* ---------- СТАНИ UI: 1. Завантаження (Loading) та 2. Помилка (Error) ---------- */
 .ui-state-box {
   margin-block: 48px;
@@ -376,9 +551,18 @@ img {
   text-align: center;
 }
 
+[data-theme="dark"] .ui-state-box {
+  background: var(--color-card);
+}
+
 .ui-state-box--error {
   border-color: #fecaca;
   background: linear-gradient(145deg, #fef2f2 0%, #ffffff 100%);
+}
+
+[data-theme="dark"] .ui-state-box--error {
+  border-color: rgba(239, 68, 68, 0.45);
+  background: linear-gradient(145deg, rgba(239, 68, 68, 0.1) 0%, #201b1f 100%);
 }
 
 .ui-spinner {
@@ -389,6 +573,11 @@ img {
   border-top-color: var(--color-accent);
   border-radius: 50%;
   animation: mcu-spin 0.85s linear infinite;
+}
+
+[data-theme="dark"] .ui-spinner {
+  border: 3px solid rgba(216, 207, 188, 0.2);
+  border-top-color: var(--color-bone);
 }
 
 @keyframes mcu-spin {
@@ -419,6 +608,18 @@ img {
   border: 1px solid #fca5a5;
 }
 
+[data-theme="dark"] .ui-state-box__badge--loading {
+  background: rgba(59, 130, 246, 0.16);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+[data-theme="dark"] .ui-state-box__badge--error {
+  background: rgba(239, 68, 68, 0.18);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
 .ui-state-box__title {
   margin: 0 0 8px;
   color: var(--color-heading);
@@ -444,6 +645,12 @@ img {
   font-size: 0.84rem;
 }
 
+[data-theme="dark"] .ui-state-box__code {
+  background: #141113;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
 .skeleton-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -459,11 +666,19 @@ img {
   border: 1px solid var(--color-line);
 }
 
+[data-theme="dark"] .skeleton-card {
+  background: var(--color-surface);
+}
+
 .skeleton-line {
   height: 12px;
   margin-bottom: 10px;
   border-radius: 6px;
   background: #e2e8f0;
+}
+
+[data-theme="dark"] .skeleton-line {
+  background: rgba(216, 207, 188, 0.12);
 }
 
 .skeleton-line--short {

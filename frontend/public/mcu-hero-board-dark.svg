@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="640" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#191618"/>
+      <stop offset="100%" stop-color="#11120D"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#D8CFBC" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Card Background -->
+  <rect width="640" height="480" rx="20" fill="url(#bgGrad)"/>
+  <rect width="640" height="480" rx="20" fill="url(#grid)"/>
+  <rect x="1" y="1" width="638" height="478" rx="19" stroke="#D8CFBC" stroke-opacity="0.2" stroke-width="2"/>
+
+  <!-- Top Window Bar -->
+  <rect x="24" y="22" width="592" height="38" rx="8" fill="#201B1F" stroke="#D8CFBC" stroke-opacity="0.14"/>
+  <circle cx="44" cy="41" r="5" fill="#EF4444"/>
+  <circle cx="62" cy="41" r="5" fill="#F59E0B"/>
+  <circle cx="80" cy="41" r="5" fill="#10B981"/>
+  <text x="104" y="45" fill="#D8CFBC" font-family="monospace" font-size="12" font-weight="bold">PINOUT BUILDER • STM32F103C8T6 (LQFP-48)</text>
+  <rect x="498" y="30" width="104" height="22" rx="11" fill="#10B981" fill-opacity="0.16" stroke="#10B981" stroke-opacity="0.5"/>
+  <circle cx="512" cy="41" r="4" fill="#10B981"/>
+  <text x="522" y="45" fill="#A7F3D0" font-family="monospace" font-size="11" font-weight="bold">IN STOCK: 34</text>
+
+  <!-- Left Panel: MCU Chip Diagram -->
+  <rect x="24" y="74" width="356" height="270" rx="12" fill="#201B1F" stroke="#D8CFBC" stroke-opacity="0.14"/>
+
+  <!-- Left Pins & Bus Badges -->
+  <g font-family="monospace" font-size="10" font-weight="bold">
+    <!-- Pin 1 -->
+    <rect x="40" y="102" width="52" height="16" rx="4" fill="#EF4444" fill-opacity="0.2" stroke="#EF4444"/>
+    <text x="48" y="114" fill="#FCA5A5">VBAT</text>
+    <line x1="92" y1="110" x2="132" y2="110" stroke="#D8CFBC" stroke-width="2"/>
+
+    <!-- Pin 2 -->
+    <rect x="40" y="128" width="52" height="16" rx="4" fill="#10B981" fill-opacity="0.2" stroke="#10B981"/>
+    <text x="48" y="140" fill="#6EE7B7">PC13</text>
+    <line x1="92" y1="136" x2="132" y2="136" stroke="#D8CFBC" stroke-width="2"/>
+
+    <!-- Pin 3 -->
+    <rect x="40" y="154" width="52" height="16" rx="4" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6"/>
+    <text x="46" y="166" fill="#93C5FD">PA0/ADC</text>
+    <line x1="92" y1="162" x2="132" y2="162" stroke="#D8CFBC" stroke-width="2"/>
+
+    <!-- Pin 4 -->
+    <rect x="40" y="180" width="52" height="16" rx="4" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B"/>
+    <text x="46" y="192" fill="#FCD34D">PA2/TX2</text>
+    <line x1="92" y1="188" x2="132" y2="188" stroke="#D8CFBC" stroke-width="2"/>
+
+    <!-- Pin 5 -->
+    <rect x="40" y="206" width="52" height="16" rx="4" fill="#A855F7" fill-opacity="0.2" stroke="#A855F7"/>
+    <text x="46" y="218" fill="#D8B4FE">PA5/SCK</text>
+    <line x1="92" y1="214" x2="132" y2="214" stroke="#D8CFBC" stroke-width="2"/>
+
+    <!-- Pin 6 -->
+    <rect x="40" y="232" width="52" height="16" rx="4" fill="#A855F7" fill-opacity="0.2" stroke="#A855F7"/>
+    <text x="44" y="244" fill="#D8B4FE">PA7/MOSI</text>
+    <line x1="92" y1="240" x2="132" y2="240" stroke="#D8CFBC" stroke-width="2"/>
+
+    <!-- Pin 7 -->
+    <rect x="40" y="258" width="52" height="16" rx="4" fill="#6B7280" fill-opacity="0.3" stroke="#9CA3AF"/>
+    <text x="52" y="270" fill="#E5E7EB">GND</text>
+    <line x1="92" y1="266" x2="132" y2="266" stroke="#D8CFBC" stroke-width="2"/>
+
+    <!-- Right Pins -->
+    <line x1="272" y1="110" x2="312" y2="110" stroke="#D8CFBC" stroke-width="2"/>
+    <rect x="312" y="102" width="54" height="16" rx="4" fill="#EF4444" fill-opacity="0.2" stroke="#EF4444"/>
+    <text x="320" y="114" fill="#FCA5A5">VDD 3V3</text>
+
+    <line x1="272" y1="136" x2="312" y2="136" stroke="#D8CFBC" stroke-width="2"/>
+    <rect x="312" y="128" width="54" height="16" rx="4" fill="#06B6D4" fill-opacity="0.2" stroke="#06B6D4"/>
+    <text x="318" y="140" fill="#67E8F9">PB6/SCL1</text>
+
+    <line x1="272" y1="162" x2="312" y2="162" stroke="#D8CFBC" stroke-width="2"/>
+    <rect x="312" y="154" width="54" height="16" rx="4" fill="#06B6D4" fill-opacity="0.2" stroke="#06B6D4"/>
+    <text x="318" y="166" fill="#67E8F9">PB7/SDA1</text>
+
+    <line x1="272" y1="188" x2="312" y2="188" stroke="#D8CFBC" stroke-width="2"/>
+    <rect x="312" y="180" width="54" height="16" rx="4" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B"/>
+    <text x="318" y="192" fill="#FCD34D">PA9/TX1</text>
+
+    <line x1="272" y1="214" x2="312" y2="214" stroke="#D8CFBC" stroke-width="2"/>
+    <rect x="312" y="206" width="54" height="16" rx="4" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B"/>
+    <text x="316" y="218" fill="#FCD34D">PA10/RX1</text>
+
+    <line x1="272" y1="240" x2="312" y2="240" stroke="#D8CFBC" stroke-width="2"/>
+    <rect x="312" y="232" width="54" height="16" rx="4" fill="#10B981" fill-opacity="0.2" stroke="#10B981"/>
+    <text x="318" y="244" fill="#6EE7B7">PA13/DIO</text>
+
+    <line x1="272" y1="266" x2="312" y2="266" stroke="#D8CFBC" stroke-width="2"/>
+    <rect x="312" y="258" width="54" height="16" rx="4" fill="#10B981" fill-opacity="0.2" stroke="#10B981"/>
+    <text x="318" y="270" fill="#6EE7B7">PA14/CLK</text>
+  </g>
+
+  <!-- Silicon Package Body -->
+  <rect x="132" y="92" width="140" height="196" rx="10" fill="#2A2529" stroke="#D8CFBC" stroke-width="2.5"/>
+  <circle cx="150" cy="110" r="5" fill="#D8CFBC"/>
+  <text x="156" y="165" fill="#FFFBF4" font-family="monospace" font-size="14" font-weight="bold">STM32F103</text>
+  <text x="166" y="185" fill="#D8CFBC" font-family="monospace" font-size="12">C8T6 ARM</text>
+  <text x="158" y="205" fill="#8C8677" font-family="monospace" font-size="10">72MHz • 64KB</text>
+  <rect x="152" y="222" width="100" height="22" rx="4" fill="#191618" stroke="#565449"/>
+  <text x="164" y="237" fill="#D8CFBC" font-family="monospace" font-size="10">CELL: R1-C2</text>
+
+  <!-- Legend Strip inside Chip Panel -->
+  <g font-family="monospace" font-size="10" fill="#D8CFBC">
+    <circle cx="52" cy="318" r="4" fill="#EF4444"/><text x="62" y="322">PWR</text>
+    <circle cx="102" cy="318" r="4" fill="#10B981"/><text x="112" y="322">GPIO</text>
+    <circle cx="156" cy="318" r="4" fill="#06B6D4"/><text x="166" y="322">I2C</text>
+    <circle cx="204" cy="318" r="4" fill="#A855F7"/><text x="214" y="322">SPI</text>
+    <circle cx="252" cy="318" r="4" fill="#F59E0B"/><text x="262" y="322">UART</text>
+    <circle cx="308" cy="318" r="4" fill="#3B82F6"/><text x="318" y="322">ADC</text>
+  </g>
+
+  <!-- Right Panel: Spatial Warehouse Organizer -->
+  <rect x="394" y="74" width="222" height="270" rx="12" fill="#201B1F" stroke="#D8CFBC" stroke-opacity="0.14"/>
+  <text x="412" y="102" fill="#FFFBF4" font-family="monospace" font-size="12" font-weight="bold">ОРГАНАЙЗЕР ORG-A1</text>
+  <text x="412" y="118" fill="#8C8677" font-family="sans-serif" font-size="11">Адресна матриця комірок</text>
+
+  <!-- Storage Cells Grid 2x3 -->
+  <rect x="412" y="132" width="88" height="54" rx="6" fill="#2A2529" stroke="#10B981" stroke-width="1.5"/>
+  <text x="422" y="150" fill="#A7F3D0" font-family="monospace" font-size="10" font-weight="bold">R1-C1 • 28шт</text>
+  <text x="422" y="168" fill="#FFFBF4" font-family="monospace" font-size="11">ESP32-WROOM</text>
+
+  <rect x="510" y="132" width="88" height="54" rx="6" fill="#2A2529" stroke="#10B981" stroke-width="2"/>
+  <text x="520" y="150" fill="#A7F3D0" font-family="monospace" font-size="10" font-weight="bold">R1-C2 • 34шт</text>
+  <text x="520" y="168" fill="#FFFBF4" font-family="monospace" font-size="11">STM32F103</text>
+
+  <rect x="412" y="196" width="88" height="54" rx="6" fill="#2A2529" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="422" y="214" fill="#FCD34D" font-family="monospace" font-size="10" font-weight="bold">R1-C4 • 6шт</text>
+  <text x="422" y="232" fill="#FFFBF4" font-family="monospace" font-size="11">ATmega328P</text>
+
+  <rect x="510" y="196" width="88" height="54" rx="6" fill="#2A2529" stroke="#10B981" stroke-width="1.5"/>
+  <text x="520" y="214" fill="#A7F3D0" font-family="monospace" font-size="10" font-weight="bold">R2-C3 • 19шт</text>
+  <text x="520" y="232" fill="#FFFBF4" font-family="monospace" font-size="11">RP2040 QFN</text>
+
+  <rect x="412" y="260" width="88" height="54" rx="6" fill="#2A2529" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="422" y="278" fill="#93C5FD" font-family="monospace" font-size="10" font-weight="bold">R3-C1 • БРОНЬ</text>
+  <text x="422" y="296" fill="#FFFBF4" font-family="monospace" font-size="11">BME280 I2C</text>
+
+  <rect x="510" y="260" width="88" height="54" rx="6" fill="#2A2529" stroke="#10B981" stroke-width="1.5"/>
+  <text x="520" y="278" fill="#A7F3D0" font-family="monospace" font-size="10" font-weight="bold">R2-C2 • 40шт</text>
+  <text x="520" y="296" fill="#FFFBF4" font-family="monospace" font-size="11">INA219 SOIC</text>
+
+  <!-- Bottom Bar: BOM Readiness Status -->
+  <rect x="24" y="358" width="592" height="98" rx="12" fill="#201B1F" stroke="#D8CFBC" stroke-opacity="0.14"/>
+  <text x="44" y="386" fill="#FFFBF4" font-family="monospace" font-size="13" font-weight="bold">BOM SPEC #04: АВТОНОМНИЙ КОНТРОЛЕР ТЕЛЕМЕТРІЇ (BUILD READINESS: 100%)</text>
+  <rect x="44" y="400" width="552" height="10" rx="5" fill="#11120D"/>
+  <rect x="44" y="400" width="552" height="10" rx="5" fill="#10B981"/>
+  <text x="44" y="434" fill="#D8CFBC" font-family="monospace" font-size="11">Payload CMS (/api/page?path=/)  •  Neon PostgreSQL  •  TypeScript Union &amp; Intersection Types</text>
+</svg>

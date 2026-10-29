@@ -36,6 +36,11 @@ export function hero({
       `
       : '';
 
+  const isDark = typeof document !== 'undefined' && document.documentElement.getAttribute('data-theme') === 'dark';
+  const resolvedSrc = (isDark && src.includes('mcu-hero-board.svg'))
+    ? '/mcu-hero-board-dark.svg'
+    : src;
+
   return `
     <section class="hero" id="${anchor}">
       <div class="hero__content">
@@ -52,7 +57,7 @@ export function hero({
         ${metricsHtml}
       </div>
       <div class="hero__visual">
-        <img class="hero__image" src="${src}" alt="${alt}" />
+        <img class="hero__image" src="${resolvedSrc}" alt="${alt}" id="heroImage" />
       </div>
     </section>
   `;
