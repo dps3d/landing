@@ -193,7 +193,7 @@ function renderAppState(state: UIState<LandingBundle>): void {
   app.innerHTML = `
     ${renderDemoToolbar('ready', currentTheme)}
     ${header(common, currentTheme)}
-    <main>${renderBlocks(page.blocks)}</main>
+    <main>${renderBlocks(page.blocks, common.menu)}</main>
     ${footer(common)}
   `;
   bindDemoButtons();
